@@ -1,11 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList, ScrollView } from 'react-native';
+import { useState } from 'react';
+import NameInput  from  './components/NameInput';
+import NameItem  from  './components/NameItem';
 
-export default function App() {
+function App( ) {
+
+
+  const [myEnteredText, setMyEnteredText] = useState('');
+  const [names, setNames] = useState([]);
+
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <NameInput myEnteredText={myEnteredText} setMyEnteredText={setMyEnteredText} names={names} setNames={setNames}/>
+      <NameItem names={names} />
     </View>
   );
 }
@@ -13,8 +22,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    paddingHorizontal: 5,
     justifyContent: 'center',
+    backgroundColor: '#fff',
+    paddingTop: 35,
   },
+
 });
+
+export default App;
